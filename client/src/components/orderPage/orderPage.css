@@ -1,0 +1,23 @@
+.order-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  direction: rtl;
+
+  .MuiFormControl-root {
+    text-align: right;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+
+    button {
+      min-width: 140px;
+    }
+  }
+}
