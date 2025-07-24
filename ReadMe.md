@@ -60,6 +60,49 @@ node
 ## add database to your sqlServer   
 in server-net run in the terminal:
 ```   
+cd server-net   
 dotnet ef database update -p ../Repository/Repository.csproj -s server-net.csproj
 ```   
 ### the collection in mongoDB will be automatically
+
+## models:  
+- order
+```  
+const orderSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  address: { type: String, required: true },
+  email: { type: String, required: true },
+  items: [
+    {
+      productId: String,
+      productName: String,
+      quantity: Number,
+      price: Number,
+    },
+  ],
+}, { timestamps: true });
+```  
+- category:   
+```  
+ public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+    }
+```  
+
+- product:  
+```  
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
+}
+```  
+
